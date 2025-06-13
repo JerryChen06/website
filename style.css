@@ -192,3 +192,49 @@ a, a:link, a:visited, a:hover, a:active {
     margin-left: 220px;   /* width + padding of sidebar */
     padding: 40px;
 }
+
+/* === 1. NAVBAR WRAP & TWEAKS === */
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;                /* allow items to wrap onto multiple lines */
+        padding: 0.5rem;                /* a bit of breathing room */
+    }
+    .nav-left {
+        justify-content: center;        /* center links when wrapped */
+    }
+    .nav-left a,
+    .dropbtn {
+        padding: 10px 12px;             /* smaller tap targets */
+        font-size: 0.9rem;              /* slightly smaller text */
+    }
+    .icon-block {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;             /* separate from nav links */
+    }
+}
+
+/* === 2. HOME SECTION PADDING & TEXT === */
+@media (max-width: 600px) {
+    .home {
+        padding: 20px 10px;             /* reduce side padding */
+    }
+    .description-home {
+        padding: 0 10px;                /* no huge 50px gutters */
+    }
+    .title-home h1 {
+        font-size: 1.6rem;              /* scale down your heading */
+        text-align: center;             /* center on small screens */
+    }
+    .description-home p {
+        font-size: 0.95rem;             /* easier to read but smaller */
+        line-height: 1.4;
+    }
+}
+
+/* === 3. MAKE FIXED-WIDTH ELEMENTS FLUID === */
+@media (max-width: 600px) {
+    .curr1 {
+        width: 100%;                    /* if you ever use .curr1, let it fill */
+    }
+}

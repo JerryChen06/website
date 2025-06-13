@@ -21,44 +21,77 @@ a, a:link, a:visited, a:hover, a:active {
 .back-to-projects {
     padding: 1rem;
 }
+
 .top-container {
     display: flex;
     gap: 2rem;
     padding: 1rem;
+    align-items: flex-start;   /* sidebar won’t stretch to match left col */
 }
-/* Final Project box */
-.final-project {
-    flex: 1;
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;   /* space between final-project & project-description */
+    flex: 1;     /* fill remaining width beside sidebar */
+}
+
+.final-project,
+.project-description {
     background-color: #101010;
-    border: 1px solid #333333;
+    border: 1px solid #333;
     border-radius: 4px;
     padding: 1rem;
 }
+
+.checkpoints {
+    width: 250px;
+    background-color: #101010;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 1rem;
+    align-self: flex-start;  /* hug its own content height */
+}
+
+
+
+.project-description h2 {
+    margin-top: 0;
+}
+
 .final-project h2 {
     margin-top: 0;
 }
 .final-project em {
     color: #888888;
 }
-/* Checkpoints sidebar */
-.checkpoints {
-    width: 250px;
-    background-color: #101010;
-    border: 1px solid #333333;
-    border-radius: 4px;
-    padding: 1rem;
-}
+
 .checkpoints h2 {
     margin-top: 0;
 }
+
 .checkpoints ul {
-    list-style-type: disc;
+    list-style: none;
+    padding: 0;
     margin: 0;
-    padding-left: 1.2rem;
-    color: #c3c3c3;
 }
+
 .checkpoints li {
-    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5em; /* space for the box */
+    margin-bottom: 0.75rem;
+}
+
+.checkpoints li::before {
+    content: "☐";         /* empty box */
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 1;
+}
+
+.checkpoints li.done::before {
+    content: "☑";         /* checked box */
 }
 /* Blog entries */
 .blog {
