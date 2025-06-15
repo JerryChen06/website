@@ -141,6 +141,10 @@ a, a:link, a:visited, a:hover, a:active {
     border-style: dashed;
 }
 
+.curr1 h2 {
+    margin-top: 0px;
+}
+
 .about-section {
     padding: 40px;
 }

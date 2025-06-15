@@ -1,0 +1,135 @@
+/* FOURIER TRANSFORM*/
+
+/* Page layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #171717;
+    color: #c3c3c3;
+    font-family: 'Avenir', sans-serif;
+}
+
+/* make all links inherit color */
+a, a:link, a:visited, a:hover, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+.back-to-projects {
+    padding: 1rem;
+}
+
+.top-container {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    align-items: flex-start;   /* sidebar won’t stretch to match left col */
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;   /* space between final-project & project-description */
+    flex: 1;     /* fill remaining width beside sidebar */
+}
+
+.final-project,
+.project-description {
+    background-color: #101010;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.checkpoints {
+    width: 250px;
+    background-color: #101010;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 1rem;
+    align-self: flex-start;  /* hug its own content height */
+}
+
+
+
+.project-description h2 {
+    margin-top: 0;
+}
+
+.final-project h2 {
+    margin-top: 0;
+}
+.final-project em {
+    color: #888888;
+}
+
+.checkpoints h2 {
+    margin-top: 0;
+}
+
+.checkpoints ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.checkpoints li {
+    position: relative;
+    padding-left: 1.5em; /* space for the box */
+    margin-bottom: 0.75rem;
+}
+
+.checkpoints li::before {
+    content: "☐";         /* empty box */
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 1;
+}
+
+.checkpoints li.done::before {
+    content: "☑";         /* checked box */
+}
+/* Blog entries */
+.blog {
+    flex: 1;
+    padding: 1rem;
+}
+.blog h2 {
+    margin-top: 0;
+}
+details {
+    background-color: #101010;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+summary {
+    padding: 0.75rem 1rem;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    font-weight: bold;
+    color: #c3c3c3;
+    list-style: none;
+}
+summary::-webkit-details-marker {
+    display: none;
+}
+details[open] summary {
+    background-color: #272727;
+}
+.entry-content {
+    padding: 1rem;
+    color: #c3c3c3;
+}
+.entry-content iframe {
+    width: 100%;
+    max-width: 640px;
+    height: 360px;
+    border: none;
+    display: block;
+    margin-top: 0.5rem;
+}
