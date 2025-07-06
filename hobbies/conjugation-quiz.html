@@ -1,0 +1,114 @@
+<script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Croatian Verb Quiz</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <style>
+        /* your existing CSS here */
+        #quiz { max-width: 400px; margin: 2em auto; color: #fff; }
+        #quiz input { width:100%; padding:8px; margin:8px 0; }
+        #quiz button { padding:8px 16px; }
+    </style>
+</head>
+<body style="background:#222;">
+
+<div id="quiz">
+    <p id="prompt">Loading…</p>
+    <input id="answer" placeholder="Type your translation" />
+    <button id="submit">Check Answer</button>
+    <p id="feedback"></p>
+</div>
+
+<script>
+    (async () => {
+        // 1) start Pyodide
+        const pyodide = await loadPyodide({
+            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/"
+        });
+
+        // 2) load your Verb.py
+        const verbCode = await fetch("Verb.py").then(r => r.text());
+        pyodide.runPython(verbCode);
+
+        // 3) define a small loader + question function in Python
+        await pyodide.runPythonAsync(`
+import random
+# re-use your existing load_verbs if it takes a filename
+# but we'll parse from text, so:
+def load_verbs_from_text(txt):
+    verbs = []
+    for raw in txt.splitlines():
+        line = raw.strip()
+        if not line or line.startswith('#'):
+            continue
+        fields = line.split(',')
+        if len(fields) == 7:
+            inf, pres, part, eng_pres, eng_past, eng_part, them_vowel = fields
+            v = Verb(inf, pres, part,
+                     (eng_pres, eng_past, eng_part),
+                     them_vowel)
+        else:
+            raise ValueError(f"Bad line: {line}")
+        verbs.append(v)
+    return verbs
+
+# fetch the CSV into this Python namespace…
+`);
+        // 4) fetch verbs.txt and hand it to Python
+        const verbsTxt = await fetch("verbs.txt").then(r => r.text());
+        pyodide.globals.set("verbstxt", verbsTxt);
+        await pyodide.runPythonAsync(`
+verbs = load_verbs_from_text(verbstxt)
+options = ["Present","Perfect","Future I","Future II","Conditional I","Conditional II"]
+
+def get_question():
+    v = random.choice(verbs)
+    tense  = random.choice(options)
+    person = random.randint(1,3)
+    number = random.choice(["sg","pl"])
+    gender = random.choice(["m","f","n"])
+    prompt = v.get_tense(person, number, gender, tense)
+    answer = v.get_english(person, number, gender, tense)
+    return prompt, answer
+`);
+
+        // 5) wire into the DOM
+        let currentAnswer = "";
+        async function loadQuestion() {
+            const [prompt, answer] = pyodide
+                .runPython("get_question()")
+                .toJs();            // converts Python tuple → JS array
+            document.getElementById("prompt").textContent = prompt;
+            document.getElementById("feedback").textContent = "";
+            document.getElementById("answer").value = "";
+            currentAnswer = answer;
+            document.getElementById("answer").focus();
+        }
+
+        function checkAnswer() {
+            const user = document.getElementById("answer").value.trim();
+            const fb = document.getElementById("feedback");
+            if (user === currentAnswer) {
+                fb.textContent = "✅ Correct!";
+            } else {
+                fb.textContent = `❌ Wrong. Answer: ${currentAnswer}`;
+            }
+        }
+
+        document.getElementById("submit")
+            .addEventListener("click", checkAnswer);
+        document.getElementById("answer")
+            .addEventListener("keydown", e => {
+                if (e.key === "Enter") checkAnswer();
+            });
+
+        // initial question
+        await loadQuestion();
+    })();
+</script>
+
+</body>
+</html>

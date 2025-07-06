@@ -1,0 +1,57 @@
+biti,sam,bi,be,was,been,i
+brinuti,brin,brinu,worry,worried,worried,e
+dati,d,da,give,gave,given,a
+doći,dođ,doš,come,came,come,e
+ići,id,iš,go,went,gone,e
+moći,mož,mog,can,could,been able,e
+naći,nađ,naš,find (informal),found (informal),found (informal),e
+otići,otič,otica,leave,left,left,e
+pronaći,pronađ,pronaš,find (formal),found (formal),found (formal),e
+uzeti,uzm,uze,take,took,taken,e
+dobiti,dobij,dobi,receive,received,received,e
+dogoditi se,dogod,dogodi,happen,happened,happened,i
+govoriti,govor,govori,speak,spoke,spoken,i
+izgubiti,izgub,izgubi,lose,lost,lost,i
+koristiti,korist,koristi,use,used,used,i
+napraviti,naprav,napravi,make,made,made,i
+otkriti,otkrij,otkri,discover,discovered,discovered,e
+ostaviti,ostav,ostavi,leave behind,left behind,left behind,i
+paziti,paz,pazi,pay attention,paid attention,paid attention,i
+pojaviti se,pojav,pojavi,appear,appeared,appeared,i
+promijeniti,promijen,promijeni,change,changed,changed,i
+smiriti,smir,smiri,calm down,calmed down,calmed down,i
+staviti,stav,stavi,put,put,put,i
+učiniti,učin,učini,do,did,done,i
+vratiti,vrat,vrati,return,returned,returned,i
+značiti,znač,znači,mean,meant,meant,i
+bojati se,boj,boja,be afraid,was afraid,been afraid,i
+držati,drž,drža,hold,held,held,i
+gledati,gled,gleda,watch,watched,watched,a
+imati,im,ima,have,had,had,a
+izgledati,izgled,izgleda,seem,seemed,seemed,a
+kazati,kaž,kaza,say,said,said,e
+morati,mor,mora,have to,had to,had to,a
+ostati,ostan,osta,stay,stayed,stayed,e
+pitati,pit,pita,ask,asked,asked,a
+pisati,piš,piša,write,wrote,written,a
+pokušati,pokuš,pokuša,try once,tried once,tried once,a
+pokušavati,pokušav,pokušava,try repeatedly,tried repeatedly,tried repeatedly,a
+postajati,postaj,postaja,become (imperf),became (imperf),become (imperf),e
+postati,postan,posta,become (perf),became (perf),become (perf),e
+postojati,postoj,postoja,exist,existed,existed,i
+pozvati,pozov,pozva,call (perf),called (perf),called (perf),e
+zvati,zov,zva,call (imperf),called (imperf),called (imperf),e
+prestati,prestan,presta,stop,stopped,stopped,e
+saznati,sazn,sazna,find out,found out,found out,a
+slušati,sluš,sluša,listen,listened,listened,a
+sjećati se,sjeć,sjeća,remember,remembered,remembered,a
+trebati,treb,treba,need,needed,needed,a
+vjerovati,vjer,vjerova,believe,believed,believed,ova
+znati,zn,zna,know,knew,known,a
+htjeti,hoć,htje,want,wanted,wanted,e
+razumjeti,razumij,razumje,understand,understood,understood,e
+smjeti,smij,smje,may,might,been allowed,e
+umrijeti,umr,umr,die,died,died,e
+vidjeti,vid,vidje,see,saw,seen,i
+voljeti,vol,volje,love,loved,loved,i
+željeti,žel,želje,wish,wished,wished,i
