@@ -18,8 +18,15 @@ class Verb:
         self.irregular = inf[:-2] != pres
         self.them_vowel = them_vowel
 
-    def present(self, person: int, number: str) -> str:
+    def present(self, person: int, number: str, gender: str = 'm') -> str:
         """Return present tense form: person=1,2,3 ; number='sg' or 'pl'"""
+        pronoun = {
+            1: {'sg': 'Ja', 'pl': 'Mi'},
+            2: {'sg': 'Ti', 'pl': 'Vi'},
+            3: {'sg': {'m': 'On', 'f': 'Ona', 'n': 'Ono'}[gender],
+                'pl': {'m': 'Oni', 'f': 'One', 'n': 'Ona'}[gender]},
+        }[person][number]
+
         # exceptions for suppletive verbs
         if self.inf == 'biti':
             stems = {
@@ -53,11 +60,17 @@ class Verb:
         se = ""
         if " se" in self.inf:
             se = " se"
-        return self.pres + suf + se
+        return ' '.join([pronoun, self.pres + suf + se])
 
     def perfect(self, person: int, number: str, gender: str = 'm') -> str:
         """biti (present) + past participle"""
-        # pick the right suffix
+        pronoun = {
+            1: {'sg': 'Ja', 'pl': 'Mi'},
+            2: {'sg': 'Ti', 'pl': 'Vi'},
+            3: {'sg': {'m': 'On', 'f': 'Ona', 'n': 'Ono'}[gender],
+                'pl': {'m': 'Oni', 'f': 'One', 'n': 'Ona'}[gender]},
+        }[person][number]
+
         if number == 'pl':
             suffix = {'m': 'li', 'f': 'le', 'n': 'la'}[gender]
         else:
@@ -73,39 +86,53 @@ class Verb:
         part += suffix
 
         bi = Verb('biti', 'sam', 'bi', ('be', 'was', 'been'),'i')
-        return f"{bi.present(person, number)} {part}"
+        was = bi.present(person, number, gender)
+        return ' '.join([pronoun, was[was.find(' ')+1:], part])
 
-    def future_i(self, person: int, number: str) -> str:
+    def future_i(self, person: int, number: str, gender: str = 'm') -> str:
         """Future I: will + infinitive"""
+        pronoun = {
+            1: {'sg': 'Ja', 'pl': 'Mi'},
+            2: {'sg': 'Ti', 'pl': 'Vi'},
+            3: {'sg': {'m': 'On', 'f': 'Ona', 'n': 'Ono'}[gender],
+                'pl': {'m': 'Oni', 'f': 'One', 'n': 'Ona'}[gender]},
+        }[person][number]
+
         aux = Verb('htjeti','hoć','htj',('want','wanted','wanted'),'e')
-        stem = aux.present(person, number)[2:]
-        return f"{stem} {self.inf}"
+        stem = aux.present(person, number)
+        stem = stem[stem.find(' ')+3:]
+        return ' '.join([pronoun, stem, self.inf])
 
     def future_ii(self, person: int, number: str, gender: str = 'm') -> str:
         """Future II (will have + past participle)"""
-        future = Verb("Buditi", "Bud", "Bud", ("Doesn't", "Matter", "At all"), 'e').present(person, number)
-        past = self.perfect(person, number, gender)
-        past = past[past.find(' '):]
-        return future + past
+        future = Verb("Buditi", "Bud", "Bud", ("Doesn't", "Matter", "At all"), 'e').present(person, number, gender)
+        components = future.split(' ')
+        past = self.perfect(person, number, gender).split(' ')
+        return ' '.join([components[0], components[1].lower(), past[2]])
 
     def conditional_i(self, person: int, number: str, gender: str = 'm') -> str:
         """Conditional I: would + past participle"""
-        prefix = {
-            1: {'sg': 'bih', 'pl': 'bismo'},
-            2: {'sg': 'bi', 'pl': 'biste'},
-            3: {'sg': 'bi', 'pl': 'bi'}
+        pronoun = {
+            1: {'sg': 'Ja', 'pl': 'Mi'},
+            2: {'sg': 'Ti', 'pl': 'Vi'},
+            3: {'sg': {'m': 'On', 'f': 'Ona', 'n': 'Ono'}[gender],
+                'pl': {'m': 'Oni', 'f': 'One', 'n': 'Ona'}[gender]},
         }[person][number]
 
-        past = self.perfect(person, number, gender)
-        past = past[past.find(' '):]
+        prefix = 'bi'
 
-        return prefix + past
+        past = self.perfect(person, number, gender)
+        past = past[past.find(' ')+1:]
+        past = past[past.find(' ') + 1:]
+
+        return ' '.join([pronoun, prefix, past])
 
     def conditional_ii(self, person: int, number: str, gender: str = 'm') -> str:
         """Conditional II (would have + past participle)"""
         biti_past = Verb('biti','sam','bi',('be','was','been'),'i').perfect(person, number, gender)
+        needed = biti_past.split(' ')[2]
         components = self.conditional_i(person, number, gender).split(' ')
-        return ' '.join([components[0], biti_past.split(' ')[1], components[1]])
+        return ' '.join([components[0], components[1], needed, components[2]])
 
     def get_tense(self, person: int, number: str, gender: str, tense: str) -> str:
         """Returns the conjugation for the tense specified"""
