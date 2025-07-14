@@ -407,3 +407,135 @@ input[type=submit]:hover {
     margin: 40px;
     padding: 10px;
 }
+
+/* RESEARCH JOURNAL */
+
+.journal-content {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+.journal-main {
+    flex: 3;
+    max-width: 60%;
+}
+.journal-sidebar {
+    flex: 1;
+    max-width: 40%;
+}
+
+.reading-list, .read-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.reading-list, .read-list li {
+    position: relative;
+    padding-left: 1.2rem;        /* make room for custom bullet */
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+.reading-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #c3a738;
+}
+
+.read-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #4caf50;
+}
+.reading-list, .read-list strong {
+    color: #cdcdcd;              /* authors in bright white */
+}
+.reading-list .read-list em {
+    color: #9a9a9a;              /* titles a bit muted */
+    font-style: normal;
+    font-weight: 300;            /* lighter weight for contrast */
+}
+
+/* Widgets */
+.widget {
+    margin-bottom: 20px;
+    padding: 0 20px 20px 20px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    background: #101010;
+}
+.widget p {
+    margin: 0.5rem 0;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+/* Progress bar container */
+.progress-container {
+    width: 100%;
+    background: #333333;
+    border-radius: 4px;
+    height: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+/* Filled portion (25% width = 5/20) */
+.progress-bar {
+    width: 5%;
+    height: 100%;
+    background: #4caf50;
+}
+
+/* Style for the collapsible completed‐papers list */
+.widget details {
+    background: #171717;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+.widget details summary {
+    cursor: pointer;
+    font-weight: bold;
+    list-style: none;
+    margin: -0.5rem -0.5rem 0.5rem;
+    padding: 0.5rem;
+}
+.widget .completed-list {
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+/* Collapsible weeks */
+details.week-entry {
+    border: 1px solid #333333;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    background: #101010;
+}
+details.week-entry summary {
+    padding: 0.75rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+}
+details.week-entry[open] summary {
+    border-bottom: 1px solid #333333;
+}
+.week-content {
+    padding: 1rem;
+}
+.week-content h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1rem;
+}
+.week-content p {
+    margin: 0 0 0.75rem;
+}
+
+/* RESEARCH PAPERS */
+.article_image {
+    margin: 50px;
+}
