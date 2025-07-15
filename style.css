@@ -403,10 +403,44 @@ input[type=submit]:hover {
 }
 
 /* LANGUAGES */
-.mandarin, .croatian {
-    margin: 40px;
-    padding: 10px;
+.languages {
+    margin: 20px;
+    padding: 40px;
 }
+/* 1. Side-by-side layout for each language + widget */
+.mandarin,
+.croatian {
+    box-sizing: border-box;
+    width: 65%;
+    float: left;
+    clear: both;              /* start each new language on its own line */
+}
+
+.mandarin + .widget,
+.croatian + .widget {
+    box-sizing: border-box;
+    width: 30%;
+    float: right;
+    margin-right: 20px;         /* gutter between widget and language */
+}
+
+/* 2. Clear floats after each widget so the next section isn’t pulled up */
+.widget::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 3. Divider above the Croatian section */
+.croatian::before {
+    content: "";
+    display: block;
+    border-top: 1px solid #333333;
+    margin: 20px 0;           /* space around the divider */
+    width: 100%;
+}
+
+
 
 /* RESEARCH JOURNAL */
 
@@ -484,6 +518,18 @@ input[type=submit]:hover {
 /* Filled portion (25% width = 5/20) */
 .progress-bar {
     width: 5%;
+    height: 100%;
+    background: #4caf50;
+}
+
+.mandarin-progress-bar {
+    width: 38%;
+    height: 100%;
+    background: #4caf50;
+}
+
+.croatian-progress-bar {
+    width: 20%;
     height: 100%;
     background: #4caf50;
 }
