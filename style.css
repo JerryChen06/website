@@ -486,7 +486,7 @@ input[type=submit]:hover {
 }
 /* Filled portion (25% width = 5/20) */
 .progress-bar { /* for research articles */
-    width: 10%;
+    width: 20%;
     height: 100%;
     background: #4caf50;
 }
