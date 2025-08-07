@@ -282,9 +282,18 @@ input[type=submit]:hover {
     background-color: #515151;
 }
 
-/* LECTURES: OVERVIEW */
-.overview-intro {
-    margin: 50px
+/* RESOURCES */
+.resources-intro {
+    margin: 50px;
+}
+
+.resource-topics {
+    margin: 50px;
+}
+
+.topic-link {
+    color: #43ef00;
+    text-decoration-line: underline;
 }
 
 /* MUSIC */
@@ -553,4 +562,18 @@ details.week-entry[open] summary {
 /* RESEARCH PAPERS */
 .article_image {
     margin: 50px;
+}
+
+/* LAB TECHNIQUES */
+
+.lab-techniques {
+    margin: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lab-column {
+    flex: 1;
+    min-width: 200px;
+    box-sizing: border-box;
 }
