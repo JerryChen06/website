@@ -22,6 +22,11 @@ a, a:link, a:visited, a:hover, a:active {
     padding: 1rem;
 }
 
+.topic-link {
+    color: #43ef00;
+    text-decoration-line: underline;
+}
+
 .top-container {
     display: flex;
     gap: 2rem;
